@@ -1,0 +1,67 @@
+<html>
+    <body>
+        HTTP Request/Response Examples: <br/>
+
+        <button onclick="simple()">Click simple</button> <br/>
+        <button onclick="httpGet()">HTTP Get header</button> <br/>
+        <button onclick="source_code()">source code</button>
+        <hr/>
+        <p id="simple"></p><br/>
+        <p id="http_header"></p><br/>
+        <p id="source_code"></p>
+        <script>
+        const arr = ["simple", "http_header", "source_code"];
+        function clear_text(arr, which){
+            arr.forEach( function(element) {
+                if (element != which) {
+                 document.getElementById(element).innerHTML = "";
+                 }
+            });
+        }
+
+        function simple(){
+            tag = "simple";
+            document.getElementById(tag).innerHTML = "Hello World";
+            clear_text(arr, tag);
+        }
+
+        function httpGet(){
+            tag = "http_header";
+            var myinit = { 
+               method: 'GET',
+               headers: {
+                   'Content-Type': 'image/png'
+               },
+               mode: 'cors',
+               cache: 'default' };
+            var request = new Request('static/foliage-1.jpg');
+            fetch(request).then(function(response){
+                result = "Response Headers:\n";
+                result = result + " status: " + response.status ;
+                headers_entries = response.headers.entries();
+                for(var pair of headers_entries){
+                     result = result + "\n" + pair[0] + ":" + pair[1]
+                }
+                console.log(result);
+                return result;
+            }).then(function(text){
+                console.log(text);
+                document.getElementById(tag).innerText = text;
+                clear_text(arr, tag);
+            });
+        }
+
+        function source_code() {
+            var tag = 'source_code';
+            var request = new Request('./hello.html');
+            fetch(request).then(function(response) {
+                return response.text();
+            }).then(function(text) {
+                console.log(text.substring(0, 3000));
+                document.getElementById(tag).innerText = text;
+                clear_text(arr, tag);
+            });             
+        }
+        </script>
+    </body>
+</html>
