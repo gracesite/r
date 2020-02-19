@@ -34,9 +34,11 @@
                },
                mode: 'cors',
                cache: 'default' };
-            var request = new Request('static/foliage-1.jpg');
+
+            var url = '../static/foliage-1.jpg';
+            var request = new Request(url);
             fetch(request).then(function(response){
-                result = "Response Headers:\n";
+                result = "Request: " + url  + "\n\n Response Headers:\n";
                 result = result + " status: " + response.status ;
                 headers_entries = response.headers.entries();
                 for(var pair of headers_entries){
@@ -53,7 +55,7 @@
 
         function source_code() {
             var tag = 'source_code';
-            var request = new Request('./hello.html');
+            var request = new Request('./http_request_response.html');
             fetch(request).then(function(response) {
                 return response.text();
             }).then(function(text) {
