@@ -87,18 +87,9 @@ stylize any heading tags withing white-panel below
 
       <article class="white-panel"> <img src="static/foliage-2.jpg" alt="">
         <h4><a href="#">Title 2</a></h4>
-        <p id="tile_2"> Static Tile2</p>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-        <script>
-        $(document).ready(function(){
-          const url = 'http://localhost';
-          $("button").click(function(){
-            $.get(url, function(data, status){
-                console.log(`${data}`);
-            });
-          });
-        </script>
-        <button>I am h6</button>
+        <p id="tile_2"> HTTP </p>
+        <button onClick="window.open('http_examples/http_request_response.html');">
+        click </button>
 
       </article>
 
