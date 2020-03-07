@@ -5,20 +5,22 @@
   body{ font-size: 12px; font-family: Arial; }
   </style>
   <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script>
+    function myfunc(url){
+    $('#ex_code').load(url);
+    }
+    </script>
 </head>
 <body>
 
 <h2>Topics</h2>
 <a href="#" onclick="myfunc('ex_import_py.html');">import</a> </br>
 <a href="#" onclick="myfunc('ex_abc_py.html');">abc</a> </br>
-<b>Content:</b> <br/> <hr/>
+</hr>
+<b>code segment:</b> <br/> 
 <div id="ex_code"></div>
 
-<script>
-function myfunc(url){
-$('#ex_code').load(url);
-}
-</script>
+
 
 </body>
 </html>
