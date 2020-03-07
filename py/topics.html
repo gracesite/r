@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  body{ font-size: 12px; font-family: Arial; }
+  </style>
+  <script src="http://code.jquery.com/jquery-latest.js"></script>
+</head>
+<body>
+
+<h2>Topics</h2>
+<a href="#" onclick="myfunc('/r/py/ex_import_py.html');">import</a> </br>
+<a href="#" onclick="myfunc('/r/py/ex_abc_py.html');">abc</a> </br>
+<b>Content:</b> <br/> <hr/>
+<div id="ex_code"></div>
+
+<script>
+function myfunc(url){
+$('#ex_code').load(url);
+}
+</script>
+
+</body>
+</html>
