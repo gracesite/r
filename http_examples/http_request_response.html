@@ -60,7 +60,7 @@
                 return response.text();
             }).then(function(text) {
                 console.log(text.substring(0, 3000));
-                document.getElementById(tag).innerText = text;
+                document.getElementById(tag).innerHTML = text;
                 clear_text(arr, tag);
             });             
         }
