@@ -1,0 +1,41 @@
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #DD4422">&#39;&#39;&#39;</span>
+<span style="color: #DD4422">heapq - Python’s heapq module implements a min-heap.</span>
+<span style="color: #DD4422">* Binary heaps implemented with zero-based array, parent at N, children are at index of 2*N + 1 and 2*N + 2 </span>
+<span style="color: #DD4422">* heapq.heapify(),heapq.heappush(), heapq.heappop()</span>
+<span style="color: #DD4422">* heapq.nsmallest(3, data), heapq.nlargest(3, data)</span>
+<span style="color: #DD4422">*** heapq.merge(*data) # it uses memory of num of array not the num of items</span>
+<span style="color: #DD4422">&#39;&#39;&#39;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">heapq</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">random</span>
+
+data <span style="color: #333333">=</span> []
+result <span style="color: #333333">=</span> []
+<span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> <span style="color: #007020">range</span>(<span style="color: #0000DD; font-weight: bold">4</span>):
+    new_data <span style="color: #333333">=</span> <span style="color: #007020">list</span>(random<span style="color: #333333">.</span>sample(<span style="color: #007020">range</span>(<span style="color: #0000DD; font-weight: bold">1</span>,<span style="color: #0000DD; font-weight: bold">101</span>),<span style="color: #0000DD; font-weight: bold">5</span>))
+    new_data<span style="color: #333333">.</span>sort()
+    data<span style="color: #333333">.</span>append(new_data)
+<span style="color: #008800; font-weight: bold">print</span>(data)
+<span style="color: #008800; font-weight: bold">for</span> i <span style="color: #000000; font-weight: bold">in</span> heapq<span style="color: #333333">.</span>merge(<span style="color: #333333">*</span>data):
+    result<span style="color: #333333">.</span>append(i)
+<span style="color: #008800; font-weight: bold">print</span>(result)
+</pre></td></tr></table></div>
+
