@@ -1,15 +1,26 @@
 <html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      .column {
+         float: left;
+         width: 20%;
+      }
+    </style>
+    </head>
     <body>
         Python Examples: <br/>
-
+        <div>
+          <div class="column">
         <a href="#" onclick="source_code('ex_abc_py.html')"> abc </a> <br/>
         <a href="#" onclick="source_code('ex_import_py.html')"> import </a> </br>
         <a href="#" onclick="source_code('ex_defaultdict_py.html')"> defaultdict</a> </br>
         <a href="#" onclick="source_code('ex_deque_py.html')"> deque</a> </br>
         <a href="#" onclick="source_code('ex_namedtuple_py.html')"> namedtuple</a> </br>
         <a href="#" onclick="source_code('ex_heapq_py.html')"> heapq</a> </br>
+        <a href="#" onclick="source_code('ex_logging_py.html')"> logging</a> </br>
+        </div>
 
-        <hr/>
         <p id="source_code"></p>
         <script>
         const arr = ["source_code"];
@@ -33,5 +44,6 @@
             });             
         }
         </script>
+        </div>
     </body>
 </html>
