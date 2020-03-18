@@ -1,0 +1,31 @@
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><table><tr><td><pre style="margin: 0; line-height: 125%"> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></td><td><pre style="margin: 0; line-height: 125%">import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument(&#39;-f&#39;, &#39;--foo&#39;, default=&#39;foobar&#39;)
+parser.add_argument(&#39;-b&#39;, &#39;--bar&#39;, default=3.14)
+args = parser.parse_args()
+
+print(&#39;args.foo=&#39;, args.foo) 
+print(&#39;args.bar=&#39;, args.bar)
+
+# To run the program:
+# python3 ex_arg_parse.py --foo gracefoot --bar 4.5
+# Output:
+# args.foo= gracefoot
+# args.bar= 4.5
+</pre></td></tr></table></div>
+
