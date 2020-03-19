@@ -12,20 +12,28 @@
 12
 13
 14
-15</pre></td><td><pre style="margin: 0; line-height: 125%">import argparse
+15
+16
+17
+18
+19</pre></td><td><pre style="margin: 0; line-height: 125%"><span style="color: #DD4422">&#39;&#39;&#39;</span>
+<span style="color: #DD4422">&gt; python3 ex_argparse.py --input_file myfile.txt --start_date 12/01/2019 --end_date 02/11/2020</span>
+<span style="color: #DD4422">output:</span>
+<span style="color: #DD4422">args.inputfile= myfile.txt</span>
+<span style="color: #DD4422">args.start_date= 12/01/2019</span>
+<span style="color: #DD4422">args.end_date= 02/11/2020</span>
+<span style="color: #DD4422">&#39;&#39;&#39;</span>
+<span style="color: #008800; font-weight: bold">import</span> <span style="color: #0e84b5; font-weight: bold">argparse</span>
 
-parser = argparse.ArgumentParser()
-parser.add_argument(&#39;-f&#39;, &#39;--foo&#39;, default=&#39;foobar&#39;)
-parser.add_argument(&#39;-b&#39;, &#39;--bar&#39;, default=3.14)
-args = parser.parse_args()
+parser <span style="color: #333333">=</span> argparse<span style="color: #333333">.</span>ArgumentParser()
 
-print(&#39;args.foo=&#39;, args.foo) 
-print(&#39;args.bar=&#39;, args.bar)
-
-# To run the program:
-# python3 ex_arg_parse.py --foo gracefoot --bar 4.5
-# Output:
-# args.foo= gracefoot
-# args.bar= 4.5
+parser<span style="color: #333333">.</span>add_argument(<span style="background-color: #fff0f0">&#39;--input_file&#39;</span>, help<span style="color: #333333">=</span><span style="background-color: #fff0f0">&#39;input file name&#39;</span>)
+parser<span style="color: #333333">.</span>add_argument(<span style="background-color: #fff0f0">&#39;--start_date&#39;</span>, help<span style="color: #333333">=</span><span style="background-color: #fff0f0">&#39;eg 12/01/2019&#39;</span>)
+parser<span style="color: #333333">.</span>add_argument(<span style="background-color: #fff0f0">&#39;--end_date&#39;</span>, help<span style="color: #333333">=</span><span style="background-color: #fff0f0">&#39;eg 02/11/2020&#39;</span>)
+args <span style="color: #333333">=</span> parser<span style="color: #333333">.</span>parse_args()
+<span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&#39;args=&#39;</span>, args)
+<span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&#39;args.inputfile=&#39;</span>, args<span style="color: #333333">.</span>input_file)
+<span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&#39;args.start_date=&#39;</span>, args<span style="color: #333333">.</span>start_date)
+<span style="color: #008800; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&#39;args.end_date=&#39;</span>, args<span style="color: #333333">.</span>end_date)
 </pre></td></tr></table></div>
 
