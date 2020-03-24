@@ -1,23 +1,19 @@
-<html>
-<body>
-<pre>
-> docker pull mysql/mysql-server:latest
-> docker run  --name=mysql -d mysql/mysql-server:latest   # -d : detached mode
-> docker logs mysql
-[Entrypoint] GENERATED ROOT PASSWORD: LApYj0H6egwaL1Asf3b0K3S4kux
-> docker exec -it mysql mysql -uroot -p
-password: LApYj0H6egwaL1Asf3b0K3S4kux
-
-Welcome to the MySQL monitor.  Commands end with ; or \g.
-Your MySQL connection id is 18
-Server version: 8.0.19
-mysql>
-
-mysql> alter user 'root'@'localhost' IDENTIFIED BY 'newpassword';
-Query OK, 0 rows affected (0.02 sec)
-
-mysql> show databases;
-</pre>
-
-</body>
-</html>
+<!-- HTML generated using hilite.me -->
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #333333">&lt;</span>html<span style="color: #333333">&gt;</span>
+    <span style="color: #333333">&lt;</span>body<span style="color: #333333">&gt;</span>
+    <span style="color: #333333">&lt;</span>pre<span style="color: #333333">&gt;</span>
+        <span style="color: #333333">&gt;</span> docker pull ubuntu
+        <span style="color: #333333">&gt;</span> docker run <span style="color: #333333">-</span>it ubuntu  <span style="color: #888888"># i: iteractive, t: terminal</span>
+        
+        <span style="color: #333333">&gt;</span> root<span style="color: #333333">@</span><span style="color: #0000DD; font-weight: bold">12121212</span>:<span style="color: #333333">/</span><span style="color: #888888"># cat /etc/os-release</span>
+        <span style="color: #888888">#</span>
+        
+        <span style="color: #333333">&gt;</span> docker ps
+        <span style="color: #333333">&gt;</span> docker stop <span style="color: #333333">&lt;</span>id<span style="color: #333333">&gt;</span>  <span style="color: #888888"># or docker kill &lt;id&gt;</span>
+    <span style="color: #333333">&lt;/</span>pre<span style="color: #333333">&gt;</span>
+    
+    <span style="color: #333333">&lt;/</span>body<span style="color: #333333">&gt;</span>
+    <span style="color: #333333">&lt;/</span>html<span style="color: #333333">&gt;</span>
+    </pre>
+</div>
+    
