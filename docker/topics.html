@@ -1,0 +1,49 @@
+<html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      .column {
+         float: left;
+         width: 20%;
+      }
+    </style>
+    </head>
+    <body>
+        Docker Example: <br/>
+        <div>
+          <div class="column">
+        <a href="#" onclick="source_code('ubuntu.html')"> ubuntu </a> <br/>
+        <a href="#" onclick="source_code('mysql.html')"> mysql</a> </br>
+        <a href="#" onclick="source_code('some.html')"></a> </br>
+        <a href="#" onclick="source_code('some.html')"></a> </br>
+        <a href="#" onclick="source_code('some.html')"></a> </br>
+        <a href="#" onclick="source_code('some.html')"></a> </br>
+        <a href="#" onclick="source_code('some.html')"></a> </br>
+        </div>
+
+        <p id="source_code"></p>
+        <script>
+        const arr = ["source_code"];
+        function clear_text(arr, which){
+            arr.forEach( function(element) {
+                if (element != which) {
+                 document.getElementById(element).innerHTML = "";
+                 }
+            });
+        }
+
+        function source_code(url) {
+            var tag = 'source_code';
+            var request = new Request(url);
+            fetch(request).then(function(response) {
+                return response.text();
+            }).then(function(text) {
+                console.log(text.substring(0, 3000));
+                document.getElementById(tag).innerHTML = text;
+                clear_text(arr, tag);
+            });             
+        }
+        </script>
+        </div>
+    </body>
+</html>

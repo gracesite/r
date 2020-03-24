@@ -1,0 +1,28 @@
+<!-- HTML generated using hilite.me -->
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #333333">&gt;</span> docker pull mysql<span style="color: #333333">/</span>mysql<span style="color: #333333">-</span>server:latest
+<span style="color: #333333">&gt;</span> docker run  <span style="color: #333333">--</span>name<span style="color: #333333">=</span>mysql <span style="color: #333333">-</span>d mysql<span style="color: #333333">/</span>mysql<span style="color: #333333">-</span>server:latest   <span style="color: #888888"># -d : detached mode</span>
+<span style="color: #333333">&gt;</span> docker logs mysql
+[Entrypoint] GENERATED ROOT PASSWORD: LApYj0H6egwaL1Asf3b0blah-blah-blah
+<span style="color: #333333">&gt;</span> docker exec <span style="color: #333333">-</span>it mysql mysql <span style="color: #333333">-</span>uroot <span style="color: #333333">-</span>p
+password: LApYj0H6egwaL1Asf3b0blah-blah-blah
+
+Welcome <span style="color: #008800; font-weight: bold">to</span> the MySQL monitor.  Commands end <span style="color: #008800; font-weight: bold">with</span> ; <span style="color: #008800; font-weight: bold">or</span> <span style="color: #FF0000; background-color: #FFAAAA">\</span>g.
+Your MySQL connection id <span style="color: #008800; font-weight: bold">is</span> <span style="color: #0000DD; font-weight: bold">18</span>
+Server version: <span style="color: #0000DD; font-weight: bold">8</span>.<span style="color: #0000DD; font-weight: bold">0</span>.<span style="color: #0000DD; font-weight: bold">19</span>
+mysql<span style="color: #333333">&gt;</span>
+
+mysql<span style="color: #333333">&gt;</span> <span style="color: #008800; font-weight: bold">alter</span> user <span style="background-color: #fff0f0">&#39;root&#39;</span><span style="color: #333333">@</span><span style="background-color: #fff0f0">&#39;localhost&#39;</span> IDENTIFIED <span style="color: #008800; font-weight: bold">BY</span> <span style="background-color: #fff0f0">&#39;yourpassword&#39;</span>;
+Query OK, <span style="color: #0000DD; font-weight: bold">0</span> rows <span style="color: #0066BB; font-weight: bold">affected</span> (<span style="color: #0000DD; font-weight: bold">0</span>.<span style="color: #0000DD; font-weight: bold">02</span> sec)
+
+mysql<span style="color: #333333">&gt;</span> <span style="color: #008800; font-weight: bold">show</span> <span style="color: #008800; font-weight: bold">databases</span>;
+<span style="color: #333333">+--------------------+</span>
+<span style="color: #333333">|</span> <span style="color: #008800; font-weight: bold">Database</span>           <span style="color: #333333">|</span>
+<span style="color: #333333">+--------------------+</span>
+<span style="color: #333333">|</span> information_schema <span style="color: #333333">|</span>
+<span style="color: #333333">|</span> mysql              <span style="color: #333333">|</span>
+<span style="color: #333333">|</span> performance_schema <span style="color: #333333">|</span>
+<span style="color: #333333">|</span> sys                <span style="color: #333333">|</span>
+<span style="color: #333333">+--------------------+</span>
+<span style="color: #0000DD; font-weight: bold">4</span> rows <span style="color: #008800; font-weight: bold">in</span> <span style="color: #333399; font-weight: bold">set</span> (<span style="color: #0000DD; font-weight: bold">0</span>.<span style="color: #0000DD; font-weight: bold">01</span> sec)
+</pre></div>
+

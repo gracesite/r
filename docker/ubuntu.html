@@ -1,0 +1,23 @@
+<html>
+<body>
+<pre>
+> docker pull mysql/mysql-server:latest
+> docker run  --name=mysql -d mysql/mysql-server:latest   # -d : detached mode
+> docker logs mysql
+[Entrypoint] GENERATED ROOT PASSWORD: LApYj0H6egwaL1Asf3b0K3S4kux
+> docker exec -it mysql mysql -uroot -p
+password: LApYj0H6egwaL1Asf3b0K3S4kux
+
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 18
+Server version: 8.0.19
+mysql>
+
+mysql> alter user 'root'@'localhost' IDENTIFIED BY 'newpassword';
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> show databases;
+</pre>
+
+</body>
+</html>
