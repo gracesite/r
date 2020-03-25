@@ -1,0 +1,50 @@
+<html>
+<body>
+<h2> My docker container with ubuntu, curl, python, vim </h2>
+<pre>
+1. file location:
+> pwd
+~/Documents/1Docker
+
+2. Dockerfile
+FROM ubuntu:latest
+
+# Install dependencies
+FROM ubuntu:latest
+
+# Install dependencies
+RUN apt-get update && apt-get install -y \
+    software-properties-common
+RUN add-apt-repository universe
+RUN apt-get update && apt-get install -y \
+    apache2 \
+    curl \
+    git \
+    vim \
+    python3.7 \
+    python3-pip
+
+# docker build -t grace-ubuntu-docker .
+# docker run -it grace-ubuntu-docker
+
+3. build the image and run it
+> pwd
+  ~/Documents/1Docker
+> docker build -t grace-ubuntu-docker .
+> docker run -it grace-ubuntu-docker
+root@dc09768ab189:/#
+
+4. start python3
+> python3
+>>> print('hello')
+hello
+
+5. use curl
+> curl -v https://example.com
+
+6. use vi
+> vim test.txt
+
+</pre>
+</body>
+</html>
