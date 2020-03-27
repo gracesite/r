@@ -1,0 +1,22 @@
+<div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;">
+<h2> Docker vs Kubernetes </h2>
+
+<div style="word-wrap: break-word">
+    If you have Docker installed on a bunch of hosts (different operating systems), you can leverage Kubernetes. These nodes, or Docker hosts, can be bare-metal servers or virtual machines. Kubernetes can then allow you to automate container provisioning, networking, load-balancing, security and scaling across all these nodes from a single command line or dashboard. A collection of nodes that is managed by a single Kubernetes instance is referred to as a Kubernetes cluster.
+<br><br> In practice you will benefit a lot more if you start with the simple case of Docker running on a single machine, and then gradually understand how Kubernetes comes into play.
+while using Docker we never have to worry about the package manager, although it is present.
+<br><br>Kubernetes allows us to run containers across multiple compute nodes (these can be VMs or a bare-metal servers). Once Kubernetes takes control over a cluster of nodes, containers can then spun up or torn down depending upon our need at any given time.  Kubernetes is an open-source system for automating deployment, scaling, and management of containerized applications.”
+</div>
+<pre>
+Kubernetes Master:
+      kube-controller-manager
+      kube-apiserver
+      kube-scheduler
+      etcd
+    
+Kubernetes Worker Node:
+      kubelet
+      kube-proxy
+      Docker
+</pre>
+</div>
