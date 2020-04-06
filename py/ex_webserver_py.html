@@ -1,0 +1,88 @@
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="background-color: #fff0f0">&#39;&#39;&#39;</span>
+<span style="background-color: #fff0f0">Very simple HTTP server in python (Updated for Python 3.7)</span>
+
+<span style="background-color: #fff0f0">Usage:</span>
+
+<span style="background-color: #fff0f0">    ./simple-webserver.py -h</span>
+<span style="background-color: #fff0f0">    ./simple-webserver.py -l localhost -p 8511</span>
+
+<span style="background-color: #fff0f0">Send a GET request:</span>
+
+<span style="background-color: #fff0f0">    curl http://localhost:8511</span>
+
+<span style="background-color: #fff0f0">Send a HEAD request:</span>
+
+<span style="background-color: #fff0f0">    curl -I http://localhost:8511</span>
+
+<span style="background-color: #fff0f0">Send a POST request:</span>
+
+<span style="background-color: #fff0f0">    curl -d &quot;fname=foobar&amp;lname=mighty&quot; http://localhost:8511</span>
+
+<span style="background-color: #fff0f0">&#39;&#39;&#39;</span>
+import argparse
+<span style="color: #008800; font-weight: bold">from</span> http.server import HTTPServer, BaseHTTPRequestHandler
+import cgi
+
+
+class <span style="color: #0066BB; font-weight: bold">S</span>(BaseHTTPRequestHandler):
+    def <span style="color: #0066BB; font-weight: bold">_set_headers</span>(self):
+        self.<span style="color: #0066BB; font-weight: bold">send_response</span>(<span style="color: #0000DD; font-weight: bold">200</span>)
+        self.<span style="color: #0066BB; font-weight: bold">send_header</span>(<span style="background-color: #fff0f0">&quot;Content-type&quot;</span>, <span style="background-color: #fff0f0">&quot;text/html&quot;</span>)
+        self.<span style="color: #0066BB; font-weight: bold">end_headers</span>()
+
+    def <span style="color: #0066BB; font-weight: bold">_html</span>(self, message):
+        <span style="background-color: #fff0f0">&quot;&quot;&quot;This just generates an HTML document that includes `message`</span>
+<span style="background-color: #fff0f0">        in the body. Override, or re-write this do do more interesting stuff.</span>
+
+<span style="background-color: #fff0f0">        &quot;&quot;&quot;</span>
+        content <span style="color: #333333">=</span> f<span style="background-color: #fff0f0">&quot;&lt;html&gt;&lt;body&gt;&lt;h1&gt;{message}&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>
+        <span style="color: #008800; font-weight: bold">return</span> content.<span style="color: #0066BB; font-weight: bold">encode</span>(<span style="background-color: #fff0f0">&quot;utf8&quot;</span>)  <span style="color: #888888"># NOTE: must return a bytes object!</span>
+
+    def <span style="color: #0066BB; font-weight: bold">do_GET</span>(self):
+        self.<span style="color: #0066BB; font-weight: bold">_set_headers</span>()
+        self.wfile.<span style="color: #008800; font-weight: bold">write</span>(self.<span style="color: #0066BB; font-weight: bold">_html</span>(<span style="background-color: #fff0f0">&quot;hi!&quot;</span>))
+
+    def <span style="color: #0066BB; font-weight: bold">do_HEAD</span>(self):
+        self.<span style="color: #0066BB; font-weight: bold">_set_headers</span>()
+
+    def <span style="color: #0066BB; font-weight: bold">do_POST</span>(self):
+
+        self.<span style="color: #0066BB; font-weight: bold">_set_headers</span>()
+        form <span style="color: #333333">=</span> cgi.<span style="color: #0066BB; font-weight: bold">FieldStorage</span>(
+            fp<span style="color: #333333">=</span>self.rfile,
+            headers<span style="color: #333333">=</span>self.headers,
+            environ<span style="color: #333333">=</span><span style="color: #FF0000; background-color: #FFAAAA">{</span><span style="background-color: #fff0f0">&#39;REQUEST_METHOD&#39;</span>: <span style="background-color: #fff0f0">&#39;POST&#39;</span><span style="color: #FF0000; background-color: #FFAAAA">}</span>
+        )
+        fname <span style="color: #333333">=</span> form.<span style="color: #0066BB; font-weight: bold">getvalue</span>(<span style="background-color: #fff0f0">&quot;fname&quot;</span>)
+        lname <span style="color: #333333">=</span> form.<span style="color: #0066BB; font-weight: bold">getvalue</span>(<span style="background-color: #fff0f0">&quot;lname&quot;</span>)
+        <span style="color: #0066BB; font-weight: bold">print</span>(fname)
+        <span style="color: #0066BB; font-weight: bold">print</span>(lname)
+        output <span style="color: #333333">=</span> self.<span style="color: #0066BB; font-weight: bold">_html</span>(<span style="background-color: #fff0f0">&quot;&lt;html&gt;&lt;body&gt;&lt;h1&gt;first name= %s, last name=%s&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span> <span style="color: #333333">%</span> (fname, lname))
+        self.wfile.<span style="color: #008800; font-weight: bold">write</span>(output)
+
+def <span style="color: #0066BB; font-weight: bold">run</span>(server_class<span style="color: #333333">=</span>HTTPServer, handler_class<span style="color: #333333">=</span>S, addr<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot;localhost&quot;</span>, port<span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">8000</span>):
+    server_address <span style="color: #333333">=</span> (addr, port)
+    httpd <span style="color: #333333">=</span> <span style="color: #0066BB; font-weight: bold">server_class</span>(server_address, handler_class)
+
+    <span style="color: #0066BB; font-weight: bold">print</span>(f<span style="background-color: #fff0f0">&quot;Starting httpd server on {addr}:{port}&quot;</span>)
+    httpd.<span style="color: #0066BB; font-weight: bold">serve_forever</span>()
+
+
+<span style="color: #008800; font-weight: bold">if</span> __name__ <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&quot;__main__&quot;</span>:
+
+    parser <span style="color: #333333">=</span> argparse.<span style="color: #0066BB; font-weight: bold">ArgumentParser</span>(description<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot;Run a simple HTTP server&quot;</span>)
+    parser.<span style="color: #0066BB; font-weight: bold">add_argument</span>(
+        <span style="background-color: #fff0f0">&quot;-l&quot;</span>,
+        <span style="background-color: #fff0f0">&quot;--listen&quot;</span>,
+        <span style="color: #008800; font-weight: bold">default</span><span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot;localhost&quot;</span>,
+        help<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot;Specify the IP address on which the server listens&quot;</span>,
+    )
+    parser.<span style="color: #0066BB; font-weight: bold">add_argument</span>(
+        <span style="background-color: #fff0f0">&quot;-p&quot;</span>,
+        <span style="background-color: #fff0f0">&quot;--port&quot;</span>,
+        type<span style="color: #333333">=</span><span style="color: #333399; font-weight: bold">int</span>,
+        <span style="color: #008800; font-weight: bold">default</span><span style="color: #333333">=</span><span style="color: #0000DD; font-weight: bold">8511</span>,
+        help<span style="color: #333333">=</span><span style="background-color: #fff0f0">&quot;Specify the port on which the server listens&quot;</span>,
+    )
+    args <span style="color: #333333">=</span> parser.<span style="color: #0066BB; font-weight: bold">parse_args</span>()
+</pre></div>
