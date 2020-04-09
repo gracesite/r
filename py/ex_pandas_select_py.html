@@ -1,0 +1,49 @@
+<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%">import numpy <span style="color: #008800; font-weight: bold">as</span> np
+import pandas <span style="color: #008800; font-weight: bold">as</span> pd
+
+df <span style="color: #333333">=</span> pd.<span style="color: #0066BB; font-weight: bold">DataFrame</span>(<span style="color: #FF0000; background-color: #FFAAAA">{</span><span style="background-color: #fff0f0">&#39;A&#39;</span>: <span style="background-color: #fff0f0">&#39;foo bar foo bar foo bar foo foo&#39;</span>.<span style="color: #0066BB; font-weight: bold">split</span>(),
+                   <span style="background-color: #fff0f0">&#39;B&#39;</span>: <span style="background-color: #fff0f0">&#39;one one two three two two one three&#39;</span>.<span style="color: #0066BB; font-weight: bold">split</span>(),
+                   <span style="background-color: #fff0f0">&#39;C&#39;</span>: np.<span style="color: #0066BB; font-weight: bold">arange</span>(<span style="color: #0000DD; font-weight: bold">8</span>), <span style="background-color: #fff0f0">&#39;D&#39;</span>: np.<span style="color: #0066BB; font-weight: bold">arange</span>(<span style="color: #0000DD; font-weight: bold">8</span>) <span style="color: #333333">*</span> <span style="color: #0000DD; font-weight: bold">2</span><span style="color: #FF0000; background-color: #FFAAAA">}</span>)
+<span style="color: #0066BB; font-weight: bold">print</span>(df) 
+
+
+<span style="color: #0066BB; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&#39;------rows where column A is foo&#39;</span>)
+<span style="color: #0066BB; font-weight: bold">print</span>(df.loc[df[<span style="background-color: #fff0f0">&#39;A&#39;</span>] <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&#39;foo&#39;</span>])
+
+<span style="color: #0066BB; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&quot;----- rows where &#39;A&#39;==&#39;foo&#39; and &#39;B&#39;==&#39;three&#39;   &quot;</span>)
+<span style="color: #0066BB; font-weight: bold">print</span>(df.loc[ (df[<span style="background-color: #fff0f0">&#39;A&#39;</span>] <span style="color: #333333">==</span> <span style="background-color: #fff0f0">&#39;foo&#39;</span>) <span style="color: #333333">&amp;</span> (df[<span style="background-color: #fff0f0">&#39;B&#39;</span>]<span style="color: #333333">==</span><span style="background-color: #fff0f0">&#39;three&#39;</span>)])
+
+<span style="color: #0066BB; font-weight: bold">print</span>(<span style="background-color: #fff0f0">&quot;-----&quot;</span>)
+<span style="color: #888888"># set_index if use more than once</span>
+df <span style="color: #333333">=</span> df.<span style="color: #0066BB; font-weight: bold">set_index</span>([<span style="background-color: #fff0f0">&#39;B&#39;</span>])
+<span style="color: #0066BB; font-weight: bold">print</span>(df.loc[<span style="background-color: #fff0f0">&#39;one&#39;</span>])
+
+<span style="background-color: #fff0f0">&#39;&#39;&#39;</span>
+<span style="background-color: #fff0f0">------ entire df</span>
+<span style="background-color: #fff0f0">     A      B  C   D</span>
+<span style="background-color: #fff0f0">0  foo    one  0   0</span>
+<span style="background-color: #fff0f0">1  bar    one  1   2</span>
+<span style="background-color: #fff0f0">2  foo    two  2   4</span>
+<span style="background-color: #fff0f0">3  bar  three  3   6</span>
+<span style="background-color: #fff0f0">4  foo    two  4   8</span>
+<span style="background-color: #fff0f0">5  bar    two  5  10</span>
+<span style="background-color: #fff0f0">6  foo    one  6  12</span>
+<span style="background-color: #fff0f0">7  foo  three  7  14</span>
+<span style="background-color: #fff0f0">------ rows where column A is foo</span>
+<span style="background-color: #fff0f0">     A      B  C   D</span>
+<span style="background-color: #fff0f0">0  foo    one  0   0</span>
+<span style="background-color: #fff0f0">2  foo    two  2   4</span>
+<span style="background-color: #fff0f0">4  foo    two  4   8</span>
+<span style="background-color: #fff0f0">6  foo    one  6  12</span>
+<span style="background-color: #fff0f0">7  foo  three  7  14</span>
+<span style="background-color: #fff0f0">----- rows where &#39;</span>A<span style="background-color: #fff0f0">&#39;==&#39;</span>foo<span style="background-color: #fff0f0">&#39; and &#39;</span>B<span style="background-color: #fff0f0">&#39;==&#39;</span>three<span style="background-color: #fff0f0">&#39;   </span>
+<span style="background-color: #fff0f0">     A      B  C   D</span>
+<span style="background-color: #fff0f0">7  foo  three  7  14</span>
+<span style="background-color: #fff0f0">----- show rows that &#39;</span>B<span style="background-color: #fff0f0">&#39; == &#39;</span>one<span style="background-color: #fff0f0">&#39;</span>
+<span style="background-color: #fff0f0">       A  C   D</span>
+<span style="background-color: #fff0f0">B              </span>
+<span style="background-color: #fff0f0">one  foo  0   0</span>
+<span style="background-color: #fff0f0">one  bar  1   2</span>
+<span style="background-color: #fff0f0">one  foo  6  12</span>
+<span style="background-color: #fff0f0">&#39;&#39;&#39;</span>
+</pre></div>
