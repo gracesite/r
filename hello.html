@@ -1,25 +1,20 @@
+<!DOCTYPE html>
 <html>
-    <body>
-        Hello! <br/>
-        <button onclick="myFunction()">Click me</button> <br/>
-        <button onclick="simple()">Click simple</button>
-        <p id="demo"></p><br/>
-        <p id="long"></p>
-        <p>Root Area</p>
-        <div id="root"/>
-        <script>
-        function simple(){
-          document.getElementById("demo").innerHTML = "Hello World";
+  <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  <body>
+  
+    <div id="mydiv"></div>
+
+    <script type="text/babel">
+      class Hello extends React.Component {
+        render() {
+          return <h1>Hello World!</h1>
         }
-        function myFunction() {
-            var request = new Request('https://gracesite.github.io/r/hello.html');
-            fetch(request).then(function(response) {
-                return response.text();
-            }).then(function(text) {
-                console.log(text.substring(0, 3000));
-                document.getElementById('long').innerText = text;
-        });             
-        }
-        </script>
-    </body>
+      }
+
+      ReactDOM.render(<Hello />, document.getElementById('mydiv'))
+    </script>
+  </body>
 </html>
