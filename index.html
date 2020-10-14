@@ -73,16 +73,31 @@ stylize any heading tags withing white-panel below
     </script>
 </head>
 <body>
+  <!-- React starts here -->
   <div id="mydiv"></div>
   <script type="text/babel">
     class Hello extends React.Component {
       render() {
-        return <h1>Hello World!</h1>
+        return <h4>Hello World!</h4>
       }
     }
     ReactDOM.render(<Hello />, document.getElementById('mydiv'))
   </script>
-  
+  <div id="react-car"></div>
+  <script type="text/babel">
+    class Car extends React.Component {
+      constructor(){
+        super();
+        this.state = {color: "red"};
+      }
+      render() {
+        return <h4>I am a {this.state.color} Car</h4>
+      }
+    }
+    ReactDOM.render(<Car />, document.getElementById('react-car'))
+  </script>
+  <!-- React ^^ -->
+
 	<div class="container">
   <div class="row">
     <h2>Grace's Things</h2>
