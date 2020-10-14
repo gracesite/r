@@ -83,7 +83,7 @@ stylize any heading tags withing white-panel below
     }
     ReactDOM.render(<Hello />, document.getElementById('mydiv'))
   </script>
-  <div id="react-car"></div>
+  <div id="car"></div>
   <script type="text/babel">
     class Car extends React.Component {
       constructor(){
@@ -94,7 +94,7 @@ stylize any heading tags withing white-panel below
         return <h4>I am a {this.state.color} Car</h4>
       }
     }
-    ReactDOM.render(<Car />, document.getElementById('react-car'))
+    ReactDOM.render(<Car />, document.getElementById('car'))
   </script>
   <!-- React ^^ -->
 
@@ -162,9 +162,31 @@ stylize any heading tags withing white-panel below
       </article>
 
       <article class="white-panel"> <img src="static/foliage-6.jpg" alt="">
-        <h4><a href="#">Title 6</a></h4>
-        <p id="tile_6">Static tile_6</p>
-        <script src="tile_6.js"></script>
+        <h4><a href="#">REACT</a></h4>
+          <!-- React starts here -->
+          <div id="mydiv"></div>
+          <script type="text/babel">
+            class Hello extends React.Component {
+              render() {
+                return <h4>Hello World!</h4>
+              }
+            }
+            ReactDOM.render(<Hello />, document.getElementById('mydiv'))
+          </script>
+          <div id="car"></div>
+          <script type="text/babel">
+            class Car extends React.Component {
+              constructor(){
+                super();
+                this.state = {color: "red"};
+              }
+              render() {
+                return <h4>I am a {this.state.color} Car</h4>
+              }
+            }
+            ReactDOM.render(<Car />, document.getElementById('car'))
+          </script>
+          <!-- React ^^ -->
       </article>
 
 
@@ -206,7 +228,7 @@ Ask any Vermont native about the best scenic routes in autumn, and Route 100 gen
   <p>
     <a href="http://validator.w3.org/" ><small>HTML</small><sup>5</sup></a>
     <br>
-    <sup><font color="green">Last update: 3/22/2020 </font> </sup>
+    <sup><font color="green"> </font> </sup>
     <br>
 
   </p>
