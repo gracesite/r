@@ -149,6 +149,7 @@ stylize any heading tags withing white-panel below
             ReactDOM.render(<Hello6 />, document.getElementById('mydiv6'))
           </script>
           <div id="car6"></div>
+          <div id="myform"></div>
           <script type="text/babel">
             class Car6 extends React.Component {
               constructor(){
@@ -160,6 +161,42 @@ stylize any heading tags withing white-panel below
               }
             }
             ReactDOM.render(<Car6 />, document.getElementById('car6'))
+          </script>
+          <script>
+            class MyForm extends React.Component {
+              constructor(props) {
+                super(props);
+                this.state = {
+                  username: '',
+                  age: null,
+                  errormessage: ''
+                };
+              }//constructor
+              myChangeHandler = (event) => {
+                let nam = event.target.name;
+                let age = event.target.age;
+                let err = '';
+                if (nam === "age"){
+                  if (val !=="" && !Number(val)){
+                    err = <font color="red"> Age must be digits </font>
+                  }
+                }
+                this.setState({errormessage: err});
+                this.setState({[nam]: val});
+              }
+              render() {
+                return(
+                  <form>
+                    <p> name:</p> 
+                    <input type='text' name='username' onChange={this.myChangeHandler} />
+                    <p> age: </p>
+                    <input type='text' name='age' onChange={this.myChangeHandler} />
+                    {this.state.errormessage}
+                  </form>
+                );
+              }
+            }
+            ReactDOM.render(<MyForm/>, document.getElementById('myform'))
           </script>
           <!-- React ^^ -->
       </article>
