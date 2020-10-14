@@ -1,14 +1,26 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
-const HelloWorld = () => {
-  
-  function sayHello() {
-    alert('Hello, World!');
+class MyForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { username: '' };
   }
-  
-  return (
-    <button onClick={sayHello}>Click me!</button>
-  );
-};
+  myChangeHandler = (event) => {
+    this.setState({username: event.target.value});
+  }
+  render() {
+    return (
+      <form>
+      <h1>Hello {this.state.username}</h1>
+      <p>Enter your name:</p>
+      <input
+        type='text'
+        onChange={this.myChangeHandler}
+      />
+      </form>
+    );
+  }
+}
 
-export default HelloWorld;
+ReactDOM.render(<MyForm />, document.getElementById('root'));
