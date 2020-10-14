@@ -15,7 +15,7 @@ class MyForm extends React.Component {
   }//constructor
   myChangeHandler = (event) => {
     let nam = event.target.name;
-    let age = event.target.age;
+    let val = event.target.value;
     let err = '';
     if (nam === "age"){
       if (!Number(val)){
@@ -28,6 +28,7 @@ class MyForm extends React.Component {
   render() {
     return(
       <form>
+        <h2>Hello {this.state.username} {this.state.age}</h2>
         <p> name:</p> 
         <input type='text' name='username' onChange={this.myChangeHandler} />
         <p> age: </p>
